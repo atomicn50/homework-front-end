@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Giph from './Giph';
 import axios from 'axios';
 import api_key from '../../config.js';
 
@@ -25,11 +26,14 @@ class TrendingGiphs extends Component {
   }
 
   render() {
-    if (this.state.trendingGiphs.length) {
+    const { trendingGiphs } = this.state;
+    // this code runs once the state is updated with the trending giphs,
+    // otherwise, nothing is rendered
+    if (trendingGiphs.length) {
       return (
         <div>
           <h1>Trending Giphs</h1>
-          <img src={this.state.trendingGiphs[0].images.downsized.url} />
+          {trendingGiphs.map(giph => <Giph url={giph.images.downsized.url} />)}
         </div>
       );
     } else {
