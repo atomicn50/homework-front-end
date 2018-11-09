@@ -12,20 +12,26 @@ class App extends Component {
     }
   }
 
-  getTrending() {
+  getTrending = () => {
     axios.get('https://api.giphy.com/v1/gifs/trending', {
       params: {
         api_key: api_key
       }
     })
-      .then(res => {console.log(res.data.data)})
+      .then(res => {this.setState({trending: res.data.data})});
   }
 
+  handleClick = () => {
+    this.getTrending();
+  }
 
   render() {
     return (
       <div>
-        <Trending />
+        <Trending 
+          handleClick={this.handleClick}
+          trending={this.state.trending}
+        />
       </div>
     );
   }

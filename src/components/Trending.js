@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Trending = () => (
+const Trending = (props) => (
   <div>
-    <button>Get Trending Giphs</button>
+    <button onClick={props.handleClick}>Get Trending Giphs</button>
   </div>
 );
 
