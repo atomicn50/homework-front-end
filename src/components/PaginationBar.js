@@ -9,6 +9,7 @@ const PaginationBar = (props) => (
       pageCount={5}
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
+      onPageChange={props.handlePageClick}
     />
   </div>
 );

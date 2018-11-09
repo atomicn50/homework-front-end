@@ -9,6 +9,7 @@ class TrendingGiphs extends Component {
     super(props);
     this.state = {
       trendingGiphs: [],
+      offset: 0,
     };
   }
 
@@ -21,10 +22,19 @@ class TrendingGiphs extends Component {
       params: {
         api_key: api_key,
         limit: 5,
+        offset: this.state.offset,
       }
     })
       .then(res => {this.setState({trendingGiphs: res.data.data})})
       .catch(err => {console.log(`error retrieving giphs: ${err}`)})
+  }
+
+  handlePageClick = (data) => {
+    //page 
+    const page = data.selected;
+  	this.setState({offset: page * 5}, () => {
+  	  this.getTrendingGiphs();
+  	})
   }
 
   render() {
@@ -35,8 +45,10 @@ class TrendingGiphs extends Component {
       return (
         <div>
           <h1>Trending Giphs</h1>
-          {trendingGiphs.map(giph => <Giph url={giph.images.downsized.url} />)}
-          <PaginationBar />
+          <div className='giphs'>
+            {trendingGiphs.map(giph => <Giph url={giph.images.downsized.url} />)}
+          </div>
+          <PaginationBar handlePageClick={this.handlePageClick}/>
         </div>
       );
     } else {

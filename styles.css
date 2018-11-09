@@ -7,3 +7,7 @@ li {
   font-size: 20px;
   font-weight: 700;
 }
+
+.giphs {
+  display: inline-flex;
+}
