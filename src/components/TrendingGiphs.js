@@ -18,7 +18,8 @@ class TrendingGiphs extends Component {
   getTrendingGiphs = () => {
     axios.get('https://api.giphy.com/v1/gifs/trending', {
       params: {
-        api_key: api_key
+        api_key: api_key,
+        limit: 5,
       }
     })
       .then(res => {this.setState({trendingGiphs: res.data.data})})
