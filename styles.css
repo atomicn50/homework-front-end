@@ -1,0 +1,9 @@
+.pagination > ul > li {
+  display: inline;
+  padding: 5px;
+}
+
+li {
+  font-size: 20px;
+  font-weight: 700;
+}

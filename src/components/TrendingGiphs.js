@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactPaginate from 'react-paginate';
 import Giph from './Giph';
 import axios from 'axios';
 import api_key from '../../config.js';
@@ -35,6 +36,15 @@ class TrendingGiphs extends Component {
         <div>
           <h1>Trending Giphs</h1>
           {trendingGiphs.map(giph => <Giph url={giph.images.downsized.url} />)}
+          <div className='pagination'>
+      	  <ReactPaginate 
+            previousLabel={'<'}
+            nextLabel={'>'}
+            pageCount={10}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+          />
+        </div>
         </div>
       );
     } else {
