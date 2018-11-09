@@ -22,7 +22,7 @@ class TrendingGiphs extends Component {
       params: {
         api_key: api_key,
         limit: 5,
-        offset: this.state.offset,
+        offset: this.state.offset, //offset is set in increments of 5
       }
     })
       .then(res => {this.setState({trendingGiphs: res.data.data})})
@@ -30,7 +30,8 @@ class TrendingGiphs extends Component {
   }
 
   handlePageClick = (data) => {
-    //page 
+    //page is a number that corresponds to the page that is clicked
+    //example: page 2 => 1 so offset is 5, meaning that the next 5 giphs are displayed
     const page = data.selected;
   	this.setState({offset: page * 5}, () => {
   	  this.getTrendingGiphs();
@@ -46,7 +47,7 @@ class TrendingGiphs extends Component {
         <div>
           <h1>Trending Giphs</h1>
           <div className='giphs'>
-            {trendingGiphs.map(giph => <Giph url={giph.images.downsized.url} />)}
+            {trendingGiphs.map(giph => <Giph url={giph.images.downsized.url} title={giph.title} />)}
           </div>
           <PaginationBar handlePageClick={this.handlePageClick}/>
         </div>

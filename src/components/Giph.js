@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Giph = ({ url }) => (
+const Giph = ({ url, title }) => (
   <div>
     <img src={url} alt="giph" />
+    <p>{title}</p>
   </div>
 );
 

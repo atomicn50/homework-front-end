@@ -11,3 +11,14 @@ li {
 .giphs {
   display: inline-flex;
 }
+
+p {
+  visibility: hidden;
+}
+
+img:hover + p {
+  visibility: visible;
+}
+
+
+
